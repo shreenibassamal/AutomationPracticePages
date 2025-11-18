@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>CSS Path Practice</title>
+  <style>
+    body { font-family: Arial; margin: 30px; }
+    .login-section { width: 300px; padding: 20px; border: 1px solid #aaa; border-radius: 10px; }
+    .shadow-container { margin-top: 20px; }
+    button { margin-top: 10px; padding: 6px 12px; background: #0078d4; color: white; border: none; border-radius: 5px; }
+  </style>
+</head>
+<body>
+  <h2>CSS Selector & Shadow DOM Practice</h2>
+
+  <div class="login-section">
+    <form id="loginForm">
+      <label for="username">Username</label>
+      <input type="text" id="username" placeholder="Enter Username" class="input-field">
+
+      <label for="password">Password</label>
+      <input type="password" id="password" placeholder="Enter Password" class="input-field">
+
+      <button type="submit" class="login-btn">Login</button>
+    </form>
+  </div>
+
+  <!-- Shadow DOM Example -->
+  <div class="shadow-container" id="shadow-host"></div>
+
+  <script>
+    // Attach Shadow DOM (open)
+    const host = document.querySelector("#shadow-host");
+    const shadowRoot = host.attachShadow({ mode: "open" });
+
+    shadowRoot.innerHTML = `
+      <style>
+        input { border: 1px solid #ccc; border-radius: 5px; padding: 5px; width: 200px; }
+      </style>
+      <div class="shadow-login">
+        <label>Email</label>
+        <input type="text" placeholder="Enter your email" class="email-field">
+        <button class="shadow-btn">Submit</button>
+      </div>
+    `;
+  </script>
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+     <h3>Basic Dropdown</h3>
+  <select>
+    <option value="">--Select a Fruit--</option>
+    <option value="apple">Apple</option>
+    <option value="banana">Banana</option>
+    <option value="mango">Mango</option>
+  </select>
+
+   <h3>Grouped Dropdown</h3>
+  <select>
+    <optgroup label="Fruits">
+      <option>Apple</option>
+      <option>Mango</option>
+      <option>Banana</option>
+    </optgroup>
+    <optgroup label="Vegetables">
+      <option>Carrot</option>
+      <option>Tomato</option>
+      <option>Potato</option>
+    </optgroup>
+  </select>
+
+   <h3>Dropdown with Disabled Options</h3>
+    <select>
+        <option value="">--Select a Country--</option>
+        <option value="usa">USA</option>
+        <option value="canada" disabled>Canada (Unavailable)</option>
+        <option value="uk">UK</option>
+        <option value="australia" disabled>Australia (Unavailable)</option>
+    </select>
+
+     <h3>Multi Select Dropdown (use Ctrl or Cmd to select multiple)</h3>
+    <select multiple>
+        <option value="red">Red</option>
+        <option value="green">Green</option>
+        <option value="blue">Blue</option>
+        <option value="yellow">Yellow</option>
+        <option value="purple">Purple</option>  
+    </select>
+     <h3>Default Selected Option</h3>
+  <select>
+    <option>Apple</option>
+    <option selected>Mango</option>
+    <option>Banana</option>
+  </select>
+
+   <h3>Dropdown with JavaScript Action</h3>
+  <select id="myDropdown" onchange="showSelection()">
+    <option value="">--Select a color--</option>
+    <option value="red">Red</option>
+    <option value="green">Green</option>
+    <option value="blue">Blue</option>
+  </select>
+</body>
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Simple Calendar With Holidays</title>
+
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 60%;
+        }
+
+        td, th {
+            border: 1px solid #000;
+            width: 80px;
+            height: 60px;
+            padding: 5px;
+            vertical-align: top;
+            text-align: left;
+        }
+
+        .holiday {
+            background-color: #ffe5e5;
+            color: red;
+        }
+    </style>
+</head>
+<body>
+
+<h2>Simple Calendar With Holiday Names</h2>
+
+<table id="calendar"></table>
+
+<script>
+    // Simple holiday list
+    const holidays = {
+        "2025-01-01": "New Year",
+        "2025-01-26": "Republic Day",
+        "2025-03-14": "Holi"
+    };
+
+    // Year & Month (change if needed)
+    let year = 2025;
+    let month = 0; // 0 = January
+
+    function createCalendar() {
+        let table = document.getElementById("calendar");
+
+        // Week day header
+        table.innerHTML = `
+            <tr>
+                <th>Sun</th><th>Mon</th><th>Tue</th>
+                <th>Wed</th><th>Thu</th><th>Fri</th><th>Sat</th>
+            </tr>
+        `;
+
+        let firstDay = new Date(year, month, 1).getDay();
+        let totalDays = new Date(year, month + 1, 0).getDate();
+
+        let row = "<tr>";
+
+        // Blank cells before 1st day
+        for (let i = 0; i < firstDay; i++) {
+            row += "<td></td>";
+        }
+
+        // Add days
+        for (let day = 1; day <= totalDays; day++) {
+
+            let dateKey = `${year}-${String(month+1).padStart(2,'0')}-${String(day).padStart(2,'0')}`;
+            let holidayName = holidays[dateKey];
+
+            if (holidayName) {
+                row += `<td class="holiday">${day}<br><small>${holidayName}</small></td>`;
+            } else {
+                row += `<td>${day}</td>`;
+            }
+
+            if ((day + firstDay) % 7 === 0) {
+                row += "</tr><tr>";
+            }
+        }
+
+        row += "</tr>";
+        table.innerHTML += row;
+    }
+
+    createCalendar();
+</script>
+
+</body>
+</html>

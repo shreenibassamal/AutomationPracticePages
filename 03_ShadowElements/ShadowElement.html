@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Shadow DOM Example</title>
+</head>
+<body>
+  <h2>Shadow DOM Example — Open, Closed, Nested</h2>
+
+  <!-- Shadow Hosts -->
+  <div id="openHost"></div>
+  <div id="closedHost"></div>
+  <div id="nestedHost"></div>
+
+  <script>
+    // 🟢 OPEN SHADOW ROOT
+    const openHost = document.getElementById('openHost');
+    const openShadow = openHost.attachShadow({ mode: 'open' }); // mode = open
+    openShadow.innerHTML = `
+      <style>p { color: green; }</style>
+      <p id="openText">I am inside an OPEN shadow root 🌿</p>
+    `;
+
+    // 🔴 CLOSED SHADOW ROOT
+    const closedHost = document.getElementById('closedHost');
+    const closedShadow = closedHost.attachShadow({ mode: 'closed' }); // mode = closed
+    closedShadow.innerHTML = `
+      <style>p { color: red; }</style>
+      <p>I am inside a CLOSED shadow root 🔒</p>
+    `;
+
+    // 🟡 NESTED SHADOW ROOT
+    const nestedHost = document.getElementById('nestedHost');
+    const outerShadow = nestedHost.attachShadow({ mode: 'open' });
+    outerShadow.innerHTML = `
+      <style>div { border: 2px solid orange; padding: 10px; }</style>
+      <div>
+        <p>Outer shadow root 🌕</p>
+        <span id="innerHost"></span>
+      </div>
+    `;
+
+    // Inner host inside the outer shadow root
+    const innerHost = outerShadow.querySelector('#innerHost');
+    const innerShadow = innerHost.attachShadow({ mode: 'open' });
+    innerShadow.innerHTML = `
+      <style>p { color: blue; }</style>
+      <p id="innerText">Inner shadow root 💧 (nested)</p>
+    `;
+  </script>
+</body>
+</html>
